@@ -82,8 +82,15 @@ header değerlerinden
 
         //3. yöntem  deserialization
         //   --object mapper
-        //   --pojo class ile birlite map
+        //   --pojo class ile birlikte map
+        // bunda da sadece body kısmı assert edilebilir.
+        HashMap<String,Object> actualData=response.as(HashMap.class); // bu satir deserialization
 
+        System.out.println(actualData);
+
+        Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
+        Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
+        Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
 
     }
 }
