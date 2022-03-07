@@ -22,14 +22,14 @@ public class HerokuAppTestData {
     public HashMap<String, Object> setUpTestData() {
 
         HashMap<String, Object> bookingdates = new HashMap<String, Object>();
-        bookingdates.put("checkin", "2016-04-12");
-        bookingdates.put("checkout", "2017-07-21");
+        bookingdates.put("checkin", "2022-01-06");
+        bookingdates.put("checkout", "2022-01-19");
 
 
         HashMap<String, Object> expectedData = new HashMap<String, Object>();
-        expectedData.put("firstname", "Susan");
-        expectedData.put("lastname", "Jones");
-        expectedData.put("totalprice", 582);
+        expectedData.put("firstname", "Eric");
+        expectedData.put("lastname", "Jackson");
+        expectedData.put("totalprice", 305);
         expectedData.put("depositpaid", true);
         expectedData.put("bookingdates", bookingdates);
 

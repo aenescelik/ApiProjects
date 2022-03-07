@@ -2,6 +2,7 @@ package com.techproed.day08;
 
 import com.techproed.testBase.HerokuAppTestBase;
 import com.techproed.testData.HerokuAppTestData;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -66,8 +67,27 @@ dönen response body nin
                 ((Map) actualDataMap.get("bookingdates")).get("checkout")  );
 
         // daha once casting islemi yapildigi icin java bunu hafizasinda tutar.
-        Assert.assertEquals( ((Map) expectedDataMap.get("bookingdates")).get("checkin"),
-                ((Map<?, ?>)// java can bunu otomatik olusturdu.
-                        actualDataMap.get("bookingdates")).get("checkin"));
+        /*Assert.assertEquals( ((Map) expectedDataMap.get("bookingdates")).get("checkin"),
+                ((Map<?, ?>)// java can bu castingi otomatik olusturur.
+                        actualDataMap.get("bookingdates")).get("checkin"));*/
+        Assert.assertEquals(
+                ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkout"),
+                ((Map<?, ?>) actualDataMap.get("bookingdates")).get("checkout")
+        );
+
+        JsonPath jsonPath = response.jsonPath();
+        Assert.assertEquals(expectedDataMap.get("firstname"),jsonPath.getString("firstname"));
+        Assert.assertEquals(expectedDataMap.get("lastname"),jsonPath.getString("lastname"));
+        Assert.assertEquals(expectedDataMap.get("totalprice"),jsonPath.getInt("totalprice"));
+        Assert.assertEquals(expectedDataMap.get("depositpaid"),jsonPath.getBoolean("depositpaid"));
+
+        Assert.assertEquals(
+                ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkin"),
+                jsonPath.getString("bookingdates.checkin")
+        );Assert.assertEquals(
+                ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkout"),
+                jsonPath.getString("bookingdates.checkout")
+        );
+
     }
 }
