@@ -1,5 +1,7 @@
 package com.techproed.testData;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,5 +63,45 @@ olduğunu test edin.
         expectedData.put("enKucukYas",19);
         expectedData.put("ikinciYuksekMaas",675000);
         return expectedData;
+    }
+
+    public HashMap<String, String> setUpRequestBody(){
+        HashMap<String,String> requestBody=new HashMap<String, String>();
+        requestBody.put("name", "batch30");
+        requestBody.put("salary","123000");
+        requestBody.put("age","20");
+        return requestBody;
+    }
+    public HashMap<String, Object> setUpExpectedData(){
+        HashMap<String,Object> innerData=new HashMap<String, Object>();
+        innerData.put("name","batch30");
+        innerData.put("salary","123000");
+        innerData.put("age","20");
+
+        HashMap<String,Object> expectedData=new HashMap<String, Object>();
+        expectedData.put("statusCode",200);
+        expectedData.put("status","success");
+        expectedData.put("data",innerData);
+        expectedData.put("message","Successfully! Record has been added.");
+
+    return expectedData;
+    }
+    public JSONObject setUpDeleteExpectedData(){
+        /*
+        {
+ "status": "success",
+ "data": "2",
+ "message": "Successfully! Record has been deleted"
+ }
+         */
+
+        JSONObject expectedData=new JSONObject();
+
+        expectedData.put("status", "success");
+        expectedData.put("data", "2");
+        expectedData.put("message", "Successfully! Record has been deleted");
+        return expectedData;
+
+
     }
 }

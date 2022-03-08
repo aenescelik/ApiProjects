@@ -7,14 +7,13 @@ import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class GetRquest13JsonPath extends DummyTestBase {
+public class GetRequest13JsonPath extends DummyTestBase {
     /*
     http://dummy.restapiexample.com/api/v1/employees url ine bir istek gönderildiğinde
     Status kodun 200 olduğunu,
