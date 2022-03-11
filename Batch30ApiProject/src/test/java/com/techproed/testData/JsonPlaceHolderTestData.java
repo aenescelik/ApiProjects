@@ -15,6 +15,7 @@ public class JsonPlaceHolderTestData {
         expectedData.put("via","1.1 vegur");
         expectedData.put("Server","cloudflare");
         expectedData.put("userId",1);
+        expectedData.put("id",7);
         expectedData.put("title","quis ut nam facilis et officia qui");
         expectedData.put("completed",false);
         return expectedData;
