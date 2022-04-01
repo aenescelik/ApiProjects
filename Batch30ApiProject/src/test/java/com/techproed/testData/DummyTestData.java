@@ -31,12 +31,12 @@ public class DummyTestData {
         ages.add(21);
         ages.add(19);
 
-        HashMap<String,Object> onBirinci=new HashMap<>();
-        onBirinci.put("id",11);
-        onBirinci.put("employee_name","Jena Gaines");
-        onBirinci.put("employee_salary",90560);
-        onBirinci.put("employee_age",30);
-        onBirinci.put("profile_image","");
+        HashMap<String,Object> onuncu=new HashMap<>();
+        onuncu.put("id", 10);
+        onuncu.put("employee_name", "Sonya Frost");
+        onuncu.put("employee_salary", 103600);
+        onuncu.put("employee_age", 23);
+        onuncu.put("profile_image", "");
 
         HashMap<String,Object> expectedData=new HashMap<String, Object>();
         expectedData.put("statusCode",200);
@@ -44,7 +44,7 @@ public class DummyTestData {
         expectedData.put("calisansayisi",24);
         expectedData.put("sondanikincicalisanmaasi",106450);
         expectedData.put("arananyaslar",ages);
-        expectedData.put("onbirincicalisan",onBirinci);
+        expectedData.put("onuncucalisan",onuncu);
 
         return expectedData;
     }
