@@ -10,8 +10,9 @@ public class HerokuAppTestBase {
     @Before
     public void setUp(){
 
-        spec02= new RequestSpecBuilder().
-                setBaseUri("https://restful-booker.herokuapp.com").
-                build();
+        spec02=new RequestSpecBuilder()
+                .setBaseUri("https://restful-booker.herokuapp.com")
+                .build();
+
     }
 }

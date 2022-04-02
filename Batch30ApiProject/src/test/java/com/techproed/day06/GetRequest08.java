@@ -30,7 +30,8 @@ public class GetRequest08 extends DummyTestBase {
 
         response.prettyPrint();
 
-        JsonPath jsonPath=response.jsonPath();
+        JsonPath jsonPath = response.jsonPath();
+
         System.out.println(jsonPath.getList("data.employee_name"));
         //  System.out.println(jsonPath.getString("data.employee_name"));
         System.out.println(jsonPath.getString("data[2].employee_name"));

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.*;
 
 public class GetRequest09 extends DummyTestBase {
   /*
@@ -38,19 +39,22 @@ Toplam 24 tane çalışan olduğunu,
 
         response.prettyPrint();
 
-        JsonPath jsonPath=response.jsonPath();
+        JsonPath jsonPath = response.jsonPath();
 
-        Assert.assertEquals(200,response.getStatusCode());
-        // Assert.assertTrue(response.getStatusCode()==200);
+        //status kodun 200,
+        assertEquals(200,response.getStatusCode());
 
-        System.out.println(jsonPath.getList("data.id").size());
-        Assert.assertEquals(24,jsonPath.getList("data.id").size());
-        Assert.assertEquals("Airi Satou",jsonPath.getString("data[4].employee_name"));
-        Assert.assertEquals(372000,jsonPath.getInt("data[5].employee_salary"));
+        //5. çalışanın isminin "Airi Satou" olduğunu ,
+        assertEquals("Airi Satou",jsonPath.getString("data.employee_name[4]"));
+        //6. çalışanın maaşının "372000" olduğunu ,
+        assertEquals(372000,jsonPath.getInt("data[5].employee_salary"));
+        //Toplam 24 tane çalışan olduğunu,
+        assertEquals(24,jsonPath.getList("data.employee_age").size());
+        //"Rhona Davidson" ın employee lerden biri olduğunu
+        assertTrue(jsonPath.getString("data.employee_name").contains("Rhona Davidson"));
+        //"21", "23", "61" yaşlarında employeeler olduğunu test edin
 
-        Assert.assertTrue( jsonPath.getList("data.employee_name").contains("Rhona Davidson"));
-
-        List<Integer> arananyaslar= Arrays.asList(21,23,61);
+        List<Integer> arananyaslar = Arrays.asList(21,23,61);
 
 //    List<Integer> arananyaslar=new ArrayList<Integer>();
 //    arananyaslar.add(21);
@@ -58,7 +62,7 @@ Toplam 24 tane çalışan olduğunu,
 //    arananyaslar.add(61);
 
 
-        Assert.assertTrue(jsonPath.getList("data.employee_age").containsAll(arananyaslar));
+        assertTrue(jsonPath.getList("data.employee_age").containsAll(arananyaslar));
 
 
 

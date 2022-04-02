@@ -17,12 +17,10 @@ public class Authentication {
     }
 
     public static String generateToken() {
-        String username = "Batch44Api";
-        String password = "Batch44+";
 
         Map<String, Object> map = new HashMap<>();
-        map.put("username", username);
-        map.put("password", password);
+        map.put("username", "Batch44Api");
+        map.put("password", "Batch44+");
 
         String endPoint = "https://www.gmibank.com/api/authenticate";
 

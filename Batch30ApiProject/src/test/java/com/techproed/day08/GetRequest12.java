@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.*;
 
 public class GetRequest12 extends HerokuAppTestBase {
     /*
@@ -54,37 +55,38 @@ dönen response body nin
         HashMap<String,Object> actualDataMap=response.as(HashMap.class);
         System.out.println(actualDataMap);
 
-        Assert.assertEquals(expectedDataMap.get("firstname"),actualDataMap.get("firstname"));
-        Assert.assertEquals(expectedDataMap.get("lastname"),actualDataMap.get("lastname"));
-        Assert.assertEquals(expectedDataMap.get("totalprice"),actualDataMap.get("totalprice"));
-        Assert.assertEquals(expectedDataMap.get("depositpaid"),actualDataMap.get("depositpaid"));
+        assertEquals(expectedDataMap.get("firstname"),actualDataMap.get("firstname"));
+        assertEquals(expectedDataMap.get("lastname"),actualDataMap.get("lastname"));
+        assertEquals(expectedDataMap.get("totalprice"),actualDataMap.get("totalprice"));
+        assertEquals(expectedDataMap.get("depositpaid"),actualDataMap.get("depositpaid"));
 
-        Assert.assertEquals(  ((Map)expectedDataMap.get("bookingdates")).get("checkin"),
-                ((Map)actualDataMap.get("bookingdates")).get("checkin"));
+        assertEquals(  ((Map)expectedDataMap.get("bookingdates")).get("checkin"),
+         ((Map)actualDataMap.get("bookingdates")).get("checkin"));
         // neden böyle yaptik. check in ve check out degerleri de bir map
 
-        Assert.assertEquals(   ((Map) expectedDataMap.get("bookingdates")).get("checkout"),
-                ((Map) actualDataMap.get("bookingdates")).get("checkout")  );
+        assertEquals(((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkout"),
+                ((Map<?, ?>) actualDataMap.get("bookingdates")).get("checkout"));
 
         // daha once casting islemi yapildigi icin java bunu hafizasinda tutar.
         /*Assert.assertEquals( ((Map) expectedDataMap.get("bookingdates")).get("checkin"),
                 ((Map<?, ?>)// java can bu castingi otomatik olusturur.
                         actualDataMap.get("bookingdates")).get("checkin"));*/
-        Assert.assertEquals(
+        assertEquals(
                 ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkout"),
                 ((Map<?, ?>) actualDataMap.get("bookingdates")).get("checkout")
         );
 
         JsonPath jsonPath = response.jsonPath();
-        Assert.assertEquals(expectedDataMap.get("firstname"),jsonPath.getString("firstname"));
-        Assert.assertEquals(expectedDataMap.get("lastname"),jsonPath.getString("lastname"));
-        Assert.assertEquals(expectedDataMap.get("totalprice"),jsonPath.getInt("totalprice"));
-        Assert.assertEquals(expectedDataMap.get("depositpaid"),jsonPath.getBoolean("depositpaid"));
+        assertEquals(expectedDataMap.get("firstname"),jsonPath.getString("firstname"));
+        assertEquals(expectedDataMap.get("lastname"),jsonPath.getString("lastname"));
+        assertEquals(expectedDataMap.get("totalprice"),jsonPath.getInt("totalprice"));
+        assertEquals(expectedDataMap.get("depositpaid"),jsonPath.getBoolean("depositpaid"));
 
-        Assert.assertEquals(
+        assertEquals(
                 ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkin"),
                 jsonPath.getString("bookingdates.checkin")
-        );Assert.assertEquals(
+        );
+        assertEquals(
                 ((Map<?, ?>) expectedDataMap.get("bookingdates")).get("checkout"),
                 jsonPath.getString("bookingdates.checkout")
         );

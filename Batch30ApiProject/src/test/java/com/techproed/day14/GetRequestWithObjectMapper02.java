@@ -49,7 +49,7 @@ Olduğunu Object Mapper kullanarak test edin
                 "\"additionalneeds\": \"Breakfast\"\n" +
                 "}";
 
-        HashMap<String,Object> expectedData =  JsonUtil.convertJsonToJava(jsonData, HashMap.class);
+        HashMap<String,Object> expectedData = JsonUtil.convertJsonToJava(jsonData,HashMap.class);
                                              //hangi data formatinda almak istiyorsak
         System.out.println(expectedData);
 

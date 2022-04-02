@@ -29,7 +29,7 @@ public class H08_ extends DummyTestBase {
         //1) Butun calisanlarin isimlerini consola yazdıralim
         System.out.println(jsonPath.getList("data.employee_name"));
         //   2) 3. calisan kisinin ismini konsola yazdıralim
-        System.out.println(jsonPath.getString("data[2].employee_name"));
+        System.out.println(jsonPath.getString("data.employee_name[2]"));
         //   3) Ilk 5 calisanin adini konsola yazdiralim
         System.out.println(jsonPath.getString("data.employee_name[0,1,2,3,4]"));
         //   4) En son calisanin adini konsola yazdiralim
