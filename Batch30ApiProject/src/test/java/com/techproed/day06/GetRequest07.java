@@ -4,10 +4,11 @@ import com.techproed.testBase.HerokuAppTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.junit.Assert;
+
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.*;
 
 public class GetRequest07 extends HerokuAppTestBase {
     /*
@@ -27,13 +28,12 @@ public class GetRequest07 extends HerokuAppTestBase {
 */
     @Test
     public void test01(){
-        spec02.pathParams("param1","booking",
-                            "param2",5);
+        spec02.pathParams("parametre1","booking",
+                "parametre2",5);
 
-        Response response = given().
-                accept("application/json").
-                spec(spec02).
-                when().get("/{param1}/{param2}");
+        Response response = given().contentType(ContentType.JSON)
+                        .spec(spec02)
+                                .when().get("/{parametre1}/{parametre2}");
 
         response.prettyPrint();
 
@@ -43,11 +43,14 @@ public class GetRequest07 extends HerokuAppTestBase {
                 statusCode(200).
                 contentType(ContentType.JSON);
 
-        Assert.assertEquals("Sally",jsonPath.getString("firstname"));
-        Assert.assertEquals("Wilson",jsonPath.getString("lastname"));
-        Assert.assertEquals(833,jsonPath.getInt("totalprice"));
-        Assert.assertEquals(true,jsonPath.getBoolean("depositpaid"));
-        Assert.assertEquals("2016-08-07",jsonPath.getString("bookingdates.checkin"));
-        Assert.assertEquals("2019-02-26",jsonPath.getString("bookingdates.checkout"));
+        assertTrue(response.getStatusCode()==200);
+        assertEquals("Mark",jsonPath.getString("firstname"));
+        assertEquals("Wilson",jsonPath.getString("lastname"));
+        assertEquals(380,jsonPath.getInt("totalprice"));
+        assertEquals(true,jsonPath.getBoolean("depositpaid"));
+        assertEquals("2019-07-14",jsonPath.getString("bookingdates.checkin"));
+        assertEquals("2020-05-05",jsonPath.getString("bookingdates.checkout"));
+        assertEquals("Breakfast",jsonPath.getString("additionalneeds"));
+
     }
 }

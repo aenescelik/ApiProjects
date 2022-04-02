@@ -45,8 +45,8 @@ public class GR19_Groovy extends DummyTestBase {
         assertTrue(yasList.get(yasList.size()-1)==23);
 
         //   4) Maası 350000 den büyük olan tüm employee name’leri ekrana yazdırın
-        System.out.println(json.getList("data.findAll{it.employee_salary<350000}.employee_name"));
+        System.out.println(json.getList("data.findAll{it.employee_salary>350000}.employee_name"));
         //      ve bunların içerisinde “Charde Marshall” olduğunu test edin
-        assertTrue(json.getList("data.findAll{it.employee_salary<350000}.employee_name").contains("Ashton Cox"));
+        assertTrue(json.getList("data.findAll{it.employee_salary>350000}.employee_name").contains("Brielle Williamson"));
     }
 }

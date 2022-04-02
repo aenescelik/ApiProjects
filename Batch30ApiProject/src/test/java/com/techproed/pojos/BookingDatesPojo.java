@@ -41,7 +41,7 @@ public class BookingDatesPojo {
         this.checkout = checkout;
     }
 
-    //4- toString creating
+    //4- toString generate
 
     @Override
     public String toString() {

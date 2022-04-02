@@ -26,18 +26,14 @@ public class GetRequest06 extends JsonPlaceHolderTestBase {
         spec01.pathParams("parametre1","todos",
                      "parametre2",123);
 
-        Response response = given().accept(ContentType.JSON)
-                .spec(spec01)
-                .when().get("/{parametre1}/{parametre2}");
+        Response response = given().contentType(ContentType.JSON).spec(spec01)
+                        .when().get("/{parametre1}/{parametre2}");
 
-        response.prettyPrint();
+        response.prettyPeek();// postmana sormadan headerleri vs. almak icin gerekli
 
-        response.then().
-                assertThat().
-                statusCode(200).
-                contentType("application/json").
-                header("Server", equalTo("cloudflare")).
-                body("userId",equalTo(7),
+        response.then().assertThat().statusCode(200).contentType("application/json")
+                .body("userId",equalTo(7)
+                ,"id",equalTo(123),
                         "title",equalTo("esse et quis iste est earum aut impedit"),
                         "completed",equalTo(false));
     }

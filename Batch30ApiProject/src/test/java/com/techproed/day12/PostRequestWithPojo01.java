@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class PostRequestWithPojo01 extends JsonPlaceHolderTestBase {
     /*
@@ -43,12 +44,12 @@ public class PostRequestWithPojo01 extends JsonPlaceHolderTestBase {
         // De serialization - map olusturmayiz zaten bu yuzden pojo kullaniyoruz.
         TodosPojo actualData=response.as(TodosPojo.class);
 
-        Assert.assertEquals(201,response.getStatusCode());
+        assertEquals(201,response.getStatusCode());
 
-        Assert.assertEquals(requestExpected.getUserID(),actualData.getUserID());
-        Assert.assertEquals(requestExpected.getId(),actualData.getId());
-        Assert.assertEquals(requestExpected.getTitle(),actualData.getTitle());
-        Assert.assertEquals(requestExpected.isCompleted(),actualData.isCompleted());
+        assertEquals(requestExpected.getUserID(),actualData.getUserID());
+        assertEquals(requestExpected.getId(),actualData.getId());
+        assertEquals(requestExpected.getTitle(),actualData.getTitle());
+        assertEquals(requestExpected.isCompleted(),actualData.isCompleted());
 
     }
 }
